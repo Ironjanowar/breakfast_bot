@@ -4,7 +4,7 @@ defmodule BreakfastBot.Repo.Migrations.InsertMenus do
   def up do
     execute("""
     INSERT INTO
-      menus (name, type, inserted_at, updated_at)
+      foodstuffs (name, type, inserted_at, updated_at)
     VALUES
       ('Café con leche', 'drink', NOW(), NOW()),
       ('Café solo largo', 'drink', NOW(), NOW()),
@@ -25,6 +25,6 @@ defmodule BreakfastBot.Repo.Migrations.InsertMenus do
   end
 
   def down do
-    execute("TRUNCATE TABLE menus")
+    execute("TRUNCATE TABLE foodstuffs")
   end
 end

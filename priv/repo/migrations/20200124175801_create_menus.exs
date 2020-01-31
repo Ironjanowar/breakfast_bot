@@ -1,19 +1,21 @@
 defmodule BreakfastBot.Repo.Migrations.CreateMenus do
   use Ecto.Migration
 
-  def up do
-    BreakfastBot.Db.Enums.FoodTypeEnum.create_type()
+  alias BreakfastBot.Db.Enums.FoodTypeEnum
 
-    create table("menus") do
+  def up do
+    FoodTypeEnum.create_type()
+
+    create table("foodstuffs") do
       add(:name, :string)
-      add(:type, BreakfastBot.Db.Enums.FoodTypeEnum.type())
+      add(:type, FoodTypeEnum.type())
 
       timestamps()
     end
   end
 
   def down do
-    drop(table("menus"))
+    drop(table("foodstuffs"))
     BreakfastBot.Db.Enums.FoodTypeEnum.drop_type()
   end
 end
